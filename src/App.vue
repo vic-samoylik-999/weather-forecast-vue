@@ -135,6 +135,9 @@ import Highlights from './components/Highlights.vue'
     cursor: pointer
 
 .info
+  display: flex
+  flex-direction: column
+  row-gap: 25px
   height: 100%
   padding: 16px
   background: url('./assets/img/gradient-1.jpg') no-repeat 50% 50%

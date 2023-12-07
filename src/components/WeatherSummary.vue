@@ -25,6 +25,12 @@
 
 <style lang="sass" scoped>
 @import '../assets/sass/main.sass'
+
+.summary 
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
 .pic-main
   width: 60px
   height: 60px
@@ -43,6 +49,7 @@
 
 .temp
   padding-bottom: 8px
+  text-align: center
   font-size: 32px
 
 .text-block
