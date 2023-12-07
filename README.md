@@ -1,14 +1,10 @@
-# weather-forecast
+# weather-forecast-vue
 
-This template should help get you started developing with Vue 3 in Vite.
+This is simple VUE 3 + REST API weather project, based on youtube series [CosyFrontend](https://youtu.be/7ZMcIlZB85E)
 
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
