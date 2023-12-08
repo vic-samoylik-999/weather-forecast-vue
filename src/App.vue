@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { API_KEY, BASE_URL } from './constants'
 import WeatherSummary from './components/WeatherSummary.vue'
 import Highlights from './components/Highlights.vue'
 
@@ -8,7 +7,7 @@ const city = ref('london')
 const weatherInfo = ref(null)
 
 const getData = () => {
-  fetch(`${BASE_URL}?q=${city.value}&appid=${API_KEY}`)
+  fetch(`${import.meta.env.VITE_BASE_URL}?q=${city.value}&appid=${import.meta.env.VITE_API_KEY}`)
     .then((responce) => responce.json())
     .then((data) => weatherInfo.value = data)
 }
