@@ -6,13 +6,13 @@ import Highlights from './components/Highlights.vue'
 const city = ref('london')
 const weatherInfo = ref(null)
 
-const getData = () => {
-  fetch(`${import.meta.env.VITE_BASE_URL}?q=${city.value}&appid=${import.meta.env.VITE_API_KEY}`)
-    .then((responce) => responce.json())
-    .then((data) => weatherInfo.value = data)
+const getWeather = async () => {
+  const responce = await fetch(`${import.meta.env.VITE_BASE_URL}?q=${city.value}&appid=${import.meta.env.VITE_API_KEY}`)
+  const data = await responce.json()
+  weatherInfo.value = data
 }
 
-onMounted(getData)
+onMounted(getWeather)
 </script>
 
 <template>
@@ -24,7 +24,7 @@ onMounted(getData)
             <section class="section section-left">
               <div class="info">
                 <div class="city-inner">
-                  <input v-model="city" @keyup.enter="getData" type="text" class="search">
+                  <input v-model="city" @keyup.enter="getWeather" type="text" class="search">
                 </div>
                 <WeatherSummary />
               </div>
