@@ -7,7 +7,7 @@ const city = ref('london')
 const weatherInfo = ref(null)
 
 const getWeather = async () => {
-  const responce = await fetch(`${import.meta.env.VITE_BASE_URL}?q=${city.value}&appid=${import.meta.env.VITE_API_KEY}`)
+  const responce = await fetch(`${import.meta.env.VITE_BASE_URL}?q=${city.value}&units=metric&appid=${import.meta.env.VITE_API_KEY}`)
   const data = await responce.json()
   weatherInfo.value = data
 }
