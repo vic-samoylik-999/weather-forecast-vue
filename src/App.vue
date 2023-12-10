@@ -1,24 +1,28 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import VueLocalStorage from 'vue-local-storage'
 import WeatherSummary from './components/WeatherSummary.vue'
 import Highlights from './components/Highlights.vue'
 
-const city = ref('london')
+const city = ref('')
 const weatherInfo = ref(null)
 
 const getWeather = async () => {
   const responce = await fetch(`${import.meta.env.VITE_BASE_URL}?q=${city.value}&units=metric&appid=${import.meta.env.VITE_API_KEY}`)
   const data = await responce.json()
   weatherInfo.value = data
+  localStorage.setItem('city', JSON.stringify(city.value))
 }
 
-// const getWeather = () => {
-//   fetch(`${import.meta.env.VITE_BASE_URL}?q=${city.value}&units=metric&appid=${import.meta.env.VITE_API_KEY}`)
-//     .then((responce) => responce.json())
-//     .then((data) => weatherInfo = data)
-// }
-
-onMounted(getWeather)
+onMounted(() => {
+  const savedCity = JSON.parse(localStorage.getItem('city'))
+  if (savedCity) {
+    city.value = savedCity
+  } else {
+    city.value = 'london'
+  }
+  getWeather()
+})
 </script>
 
 <template>
