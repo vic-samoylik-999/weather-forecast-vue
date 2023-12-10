@@ -1,27 +1,58 @@
 <script setup>
+import { capitalize } from '../utils'
+import { DotLoader } from "vue3-spinner"
+
+const props = defineProps({
+  weatherInfo: {
+    type: [Object, null],
+    required: true
+  }
+})
+
+const today = new Date().toLocaleDateString("en-EN", {
+  weekday: 'short',
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+})
+
 </script>
 
-<template>
-  <div class="summary">
-    <div style="background-image: url('src/assets/img/weather-main/thunderstorm.png');" class="pic-main"></div>
+<template >
+  <div v-if="weatherInfo?.weather" class="summary">
+    <div v-if="weatherInfo?.weather[0].description"
+      :style="`background-image: url('src/assets/img/weather-main/${weatherInfo?.weather[0].description}.png');`"
+      class="pic-main"></div>
     <div class="weather">
       <div class="temp">
-        14 °C
+        {{ Math.round(weatherInfo?.main.temp) }} °C
       </div>
       <div class="weather-desc text-block">
-        Thunderstorm
+        {{ capitalize(weatherInfo?.weather[0].description) }}
       </div>
     </div>
     <div class="city text-block">
-      Paris,
-      FR
+      {{ weatherInfo?.name }},
+      {{ weatherInfo?.sys.country }}
     </div>
     <div class="date text-block">
-      Thu, March 16, 2023
+      {{ today }}
     </div>
   </div>
-</template>
 
+  <!-- Loading when weatherInfo no loaded yet -->
+  <div v-else-if="weatherInfo == null" class="summary">
+    <DotLoader />
+  </div>
+  <!-- Handler to city which is not found -->
+  <div v-else-if="weatherInfo?.cod == 404" class="summary">
+    <p>{{ capitalize(weatherInfo?.message) }}</p>
+  </div>
+  <!-- Handler to empty input -->
+  <div v-else-if="weatherInfo?.cod == 400" class="summary">
+    <p>{{ capitalize(weatherInfo?.message) }}</p>
+  </div>
+</template>
 
 <style lang="sass" scoped>
 @import '../assets/sass/main.sass'

@@ -12,6 +12,12 @@ const getWeather = async () => {
   weatherInfo.value = data
 }
 
+// const getWeather = () => {
+//   fetch(`${import.meta.env.VITE_BASE_URL}?q=${city.value}&units=metric&appid=${import.meta.env.VITE_API_KEY}`)
+//     .then((responce) => responce.json())
+//     .then((data) => weatherInfo = data)
+// }
+
 onMounted(getWeather)
 </script>
 
@@ -26,7 +32,7 @@ onMounted(getWeather)
                 <div class="city-inner">
                   <input v-model="city" @keyup.enter="getWeather" type="text" class="search">
                 </div>
-                <WeatherSummary />
+                <WeatherSummary :weatherInfo="weatherInfo" />
               </div>
             </section>
             <section class="section section-right">
