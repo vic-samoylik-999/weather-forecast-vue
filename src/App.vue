@@ -1,16 +1,18 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import VueLocalStorage from 'vue-local-storage'
 import WeatherSummary from './components/WeatherSummary.vue'
 import Highlights from './components/Highlights.vue'
+import Coordinats from './components/Coordinats.vue'
 
 const city = ref('')
 const weatherInfo = ref(null)
+const coordinats = ref(null)
 
 const getWeather = async () => {
   const responce = await fetch(`${import.meta.env.VITE_BASE_URL}?q=${city.value}&units=metric&appid=${import.meta.env.VITE_API_KEY}`)
   const data = await responce.json()
   weatherInfo.value = data
+  coordinats.value = data.coord
   localStorage.setItem('city', JSON.stringify(city.value))
 }
 
@@ -45,30 +47,7 @@ onMounted(() => {
           </div>
           <div class="sections">
             <section class="section-bottom">
-              <div class="block-bottom">
-                <div class="block-bottom-inner">
-                  <div class="block-bottom-pic pic-coords"></div>
-                  <div class="block-bottom-texts">
-                    <div class="block-bottom-text-block">
-                      <div class="block-bottom-text-block-title">
-                        Longitude: 2.3488
-                      </div>
-                      <div class="block-bottom-text-block-desc">
-                        Longitude measures distance east or west of the prime meridian.
-                      </div>
-                    </div>
-                    <div class="block-bottom-text-block">
-                      <div class="block-bottom-text-block-title">
-                        Latitude: 48.8534
-                      </div>
-                      <div class="block-bottom-text-block-desc">
-                        Latitude lines start at the equator (0 degrees latitude) and run east and
-                        west, parallel to the equator.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Coordinats :coordinats="coordinats" />
             </section>
             <section class="section-bottom">
               <div class="block-bottom">
