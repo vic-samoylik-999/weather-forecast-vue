@@ -3,16 +3,15 @@ import { ref, onMounted } from 'vue'
 import WeatherSummary from './components/WeatherSummary.vue'
 import Highlights from './components/Highlights.vue'
 import Coordinats from './components/Coordinats.vue'
+import Humidity from './components/Humidity.vue'
 
 const city = ref('')
 const weatherInfo = ref(null)
-const coordinats = ref(null)
 
 const getWeather = async () => {
   const responce = await fetch(`${import.meta.env.VITE_BASE_URL}?q=${city.value}&units=metric&appid=${import.meta.env.VITE_API_KEY}`)
   const data = await responce.json()
   weatherInfo.value = data
-  coordinats.value = data.coord
   localStorage.setItem('city', JSON.stringify(city.value))
 }
 
@@ -47,28 +46,10 @@ onMounted(() => {
           </div>
           <div class="sections">
             <section class="section-bottom">
-              <Coordinats :coordinats="coordinats" />
+              <Coordinats :coordinats="weatherInfo?.coord" />
             </section>
             <section class="section-bottom">
-              <div class="block-bottom">
-                <div class="block-bottom-inner">
-                  <div class="block-bottom-pic pic-humidity"></div>
-                  <div class="block-bottom-texts">
-                    <div class="block-bottom-text-block">
-                      <div class="block-bottom-text-block-title">
-                        Humidity: 60 %
-                      </div>
-                      <div class="block-bottom-text-block-desc">
-                        Humidity is the concentration of water vapor present in the air. Water
-                        vapor, the gaseous state of water, is generally invisible to the human eye.
-                        <br /><br />
-                        The same amount of water vapor results in higher relative humidity in cool
-                        air than warm air.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Humidity :humidity="weatherInfo?.main?.humidity" />
             </section>
           </div>
         </div>
