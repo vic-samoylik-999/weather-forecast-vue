@@ -1,4 +1,5 @@
 <script setup>
+import { DotLoader } from "vue3-spinner"
 const props = defineProps({
     coordinats: {
         type: [Object, null],
@@ -13,11 +14,8 @@ const props = defineProps({
             <div class="block-bottom-pic pic-coords"></div>
             <div class="block-bottom-texts">
                 <div class="block-bottom-text-block">
-                    <div v-if="coordinats" class="block-bottom-text-block-title">
+                    <div class="block-bottom-text-block-title">
                         Longitude: {{ coordinats?.lon }}
-                    </div>
-                    <div v-else class="block-bottom-text-block-title">
-                        Longitude: no data
                     </div>
                     <div class="block-bottom-text-block-desc">
                         Longitude measures distance east or west of the prime meridian.

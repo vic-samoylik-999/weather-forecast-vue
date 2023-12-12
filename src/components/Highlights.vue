@@ -1,5 +1,6 @@
 <script setup>
 import WindInfo from './WindInfo.vue'
+import PressureInfo from './PressureInfo.vue';
 const props = defineProps({
   weatherInfo: {
     type: [Array, null],
@@ -15,48 +16,7 @@ const props = defineProps({
     </div>
     <div class="highlights-wrapper">
       <WindInfo :windInfo="weatherInfo?.wind" />
-      <div class="highlight">
-        <div class="card">
-          <div class="card-title">
-            Pressure
-          </div>
-          <div class="card-pic card-pic--pressure"></div>
-          <div class="card-info">
-            <div class="card-centered">
-              <div class="info-main">
-                <div class="info-main-num">
-                  765
-                </div>
-                <div class="info-main-text">
-                  mm
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-small">
-          <div class="card-small-title">
-            Feels like
-          </div>
-          <div class="card-small-info">
-            <div class="card-small-data">
-              <div class="info-main-num">
-                21
-              </div>
-              <div class="info-main-text">
-                °C
-              </div>
-            </div>
-            <div class="card-small-hint">
-              <div class="card-small-pic card-small-pic--margin card-small-pic--pressure">
-              </div>
-              <div class="card-small-text">
-                How hot or cold it really feels
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <PressureInfo :pressureInfo="weatherInfo?.main" />
       <div class="highlight">
         <div class="card">
           <div class="card-title">
