@@ -61,7 +61,7 @@ const today = new Date().toLocaleDateString("en-EN", {
   display: flex
   flex-direction: column
   align-items: center
-  justify-content: center
+
 .pic-main
   width: 60px
   height: 60px
@@ -77,6 +77,9 @@ const today = new Date().toLocaleDateString("en-EN", {
   margin: 0 0 20px
   padding: 20px 0
   border-bottom: 1px solid rgba(255, 255, 255, 0.4)
+  display: flex
+  flex-direction: column
+  align-items: center
 
 .temp
   padding-bottom: 8px
