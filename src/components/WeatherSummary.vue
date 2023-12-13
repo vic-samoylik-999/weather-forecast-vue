@@ -21,8 +21,8 @@ const today = new Date().toLocaleDateString("en-EN", {
 <template >
   <div v-if="weatherInfo?.weather" class="summary">
     <div v-if="weatherInfo?.weather[0].description"
-      :style="`background-image: url('src/assets/img/weather-main/${weatherInfo?.weather[0].description}.png');`"
-      class="pic-main"></div>
+      :style="`background-image: url('/weather-main/${weatherInfo?.weather[0].description}.png');`" class="pic-main">
+    </div>
     <div class="weather">
       <div class="temp">
         {{ Math.round(weatherInfo?.main.temp) }} °C
