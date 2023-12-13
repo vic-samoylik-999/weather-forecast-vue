@@ -18,7 +18,7 @@ const props = defineProps({
     <div class="highlights-wrapper">
       <WindInfo :windInfo="weatherInfo?.wind" />
       <PressureInfo :pressureInfo="weatherInfo?.main" />
-      <CloudnessAndSunrise :clouds="weatherInfo?.clouds" />
+      <CloudnessAndSunrise :weatherInfo="weatherInfo" />
     </div>
   </div>
 </template>

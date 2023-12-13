@@ -1,10 +1,21 @@
 <script setup>
+import { getTime } from '../utils'
+import { computed } from 'vue'
 const props = defineProps({
-    clouds: {
-        type: Number,
+    weatherInfo: {
+        type: [Object, null],
         required: true
     }
 })
+
+const sunrise = computed(() => {
+    return getTime(props.weatherInfo?.sys.sunrise + props.weatherInfo?.timezone)
+})
+
+const sunset = computed(() => {
+    return getTime(props.weatherInfo?.sys.sunset + props.weatherInfo?.timezone)
+})
+
 </script>
 <template>
     <div class="highlight">
@@ -20,8 +31,11 @@ const props = defineProps({
                         <div class="state-title">
                             Sunrise
                         </div>
-                        <div class="state-time">
-                            07:31:42
+                        <div v-if="weatherInfo" class="state-time">
+                            {{ sunrise }}
+                        </div>
+                        <div v-else class="state-time">
+                            no data
                         </div>
                     </div>
                     <div class="state">
@@ -29,8 +43,11 @@ const props = defineProps({
                         <div class="state-title">
                             Sunset
                         </div>
-                        <div class="state-time">
-                            18:34:19
+                        <div v-if="weatherInfo" class="state-time">
+                            {{ sunset }}
+                        </div>
+                        <div v-else class="state-time">
+                            no data
                         </div>
                     </div>
                 </div>
@@ -41,9 +58,9 @@ const props = defineProps({
                 Cloudiness
             </div>
             <div class="card-small-info">
-                <div v-if="clouds" class="card-small-data">
+                <div v-if="weatherInfo" class="card-small-data">
                     <div class="info-main-num">
-                        {{ clouds?.all }}
+                        {{ weatherInfo?.clouds.all }}
                     </div>
                     <div class="info-main-text">
                         %

@@ -7,3 +7,7 @@ export const capitalize = (str) => {
 export const convertPressure = (hpa) => {
     return Math.round(PRESSURE_CONSTANT * hpa)
 }
+
+export const getTime = (seconds) => {
+    return new Date(seconds * 1000).toLocaleTimeString('ru-RU', { timeZone: 'Atlantic/Reykjavik'})
+}
