@@ -26,12 +26,7 @@ const props = defineProps({
                         </div>
                     </div>
                     <div v-else class="info-main">
-                        <div class="info-main-num">
-                            -
-                        </div>
-                        <div class="info-main-text">
-                            mm
-                        </div>
+                        no data
                     </div>
                 </div>
             </div>

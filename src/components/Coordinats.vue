@@ -14,15 +14,18 @@ const props = defineProps({
             <div class="block-bottom-pic pic-coords"></div>
             <div class="block-bottom-texts">
                 <div class="block-bottom-text-block">
-                    <div class="block-bottom-text-block-title">
+                    <div v-if="coordinats?.lon" class="block-bottom-text-block-title">
                         Longitude: {{ coordinats?.lon }}
+                    </div>
+                    <div v-else class="block-bottom-text-block-title">
+                        Longitude: no data
                     </div>
                     <div class="block-bottom-text-block-desc">
                         Longitude measures distance east or west of the prime meridian.
                     </div>
                 </div>
                 <div class="block-bottom-text-block">
-                    <div v-if="coordinats" class="block-bottom-text-block-title">
+                    <div v-if="coordinats?.lat" class="block-bottom-text-block-title">
                         Latitude: {{ coordinats?.lat }}
                     </div>
                     <div v-else class="block-bottom-text-block-title">

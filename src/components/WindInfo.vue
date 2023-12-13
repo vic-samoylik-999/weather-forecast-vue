@@ -15,7 +15,7 @@ const props = defineProps({
             <div class="card-pic card-pic--wind"></div>
             <div class="card-info">
                 <div class="card-justify">
-                    <div class="info-main">
+                    <div v-if="windInfo" class="info-main">
                         <div class="info-main-num">
                             {{ windInfo?.speed }}
                         </div>
@@ -23,13 +23,19 @@ const props = defineProps({
                             m/s
                         </div>
                     </div>
-                    <div class="info-main">
+                    <div v-else class="info-main">
+                        no data
+                    </div>
+                    <div v-if="windInfo" class="info-main">
                         <div class="info-main-num">
                             {{ windInfo?.deg }}
                         </div>
                         <div class="info-main-text">
                             deg
                         </div>
+                    </div>
+                    <div v-else class="info-main">
+                        no data
                     </div>
                 </div>
             </div>
@@ -39,16 +45,16 @@ const props = defineProps({
                 Wind gusts
             </div>
             <div class="card-small-info">
-                <div class="card-small-data">
-                    <div v-if="windInfo?.gust" class="info-main-num">
+                <div v-if="windInfo?.gust" class="card-small-data">
+                    <div class="info-main-num">
                         {{ Math.round(windInfo?.gust) }}
-                    </div>
-                    <div v-else class="info-main-num">
-                        0
                     </div>
                     <div class="info-main-text">
                         m/s
                     </div>
+                </div>
+                <div v-else class="card-small-data">
+                    no data
                 </div>
                 <div class="card-small-hint">
                     <div class="card-small-pic card-small-pic--wind"></div>

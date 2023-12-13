@@ -31,7 +31,7 @@ const sunset = computed(() => {
                         <div class="state-title">
                             Sunrise
                         </div>
-                        <div v-if="weatherInfo" class="state-time">
+                        <div v-if="weatherInfo?.sys" class="state-time">
                             {{ sunrise }}
                         </div>
                         <div v-else class="state-time">
@@ -43,7 +43,7 @@ const sunset = computed(() => {
                         <div class="state-title">
                             Sunset
                         </div>
-                        <div v-if="weatherInfo" class="state-time">
+                        <div v-if="weatherInfo?.sys" class="state-time">
                             {{ sunset }}
                         </div>
                         <div v-else class="state-time">
@@ -58,7 +58,7 @@ const sunset = computed(() => {
                 Cloudiness
             </div>
             <div class="card-small-info">
-                <div v-if="weatherInfo" class="card-small-data">
+                <div v-if="weatherInfo?.clouds.all" class="card-small-data">
                     <div class="info-main-num">
                         {{ weatherInfo?.clouds.all }}
                     </div>
