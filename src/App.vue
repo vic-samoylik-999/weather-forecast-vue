@@ -78,13 +78,13 @@ onMounted(() => {
 .sections
   display: flex
   width: 100%
+  gap: 20px
 
   @media (max-width: 767px)
     flex-direction: column
 
 .section-left
   width: 30%
-  padding-right: 10px
 
   @media (max-width: 767px)
     width: 100%
@@ -92,7 +92,6 @@ onMounted(() => {
 
 .section-right
   width: 70%
-  padding-left: 10px
 
   @media (max-width: 767px)
     width: 100%
