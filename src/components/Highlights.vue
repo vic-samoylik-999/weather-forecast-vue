@@ -4,7 +4,7 @@ import PressureInfo from './PressureInfo.vue';
 import CloudnessAndSunrise from './CloudnessAndSunrise.vue';
 const props = defineProps({
   weatherInfo: {
-    type: [Array, null],
+    type: [Object, null],
     required: true
   }
 })
