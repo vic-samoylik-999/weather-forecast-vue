@@ -93,6 +93,7 @@ onMounted(() => {
 
   @media (max-width: 767px)
     flex-direction: column
+    gap: initial
 
 .section-left
   width: 30% 
