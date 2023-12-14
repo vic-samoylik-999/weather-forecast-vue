@@ -25,12 +25,12 @@ const props = defineProps({
 
 <style lang="sass" scoped>
 @import '../assets/sass/main.sass'
+@import '../assets/sass/mixins.sass'
 
 .highlights
   padding: 28px 16px 16px
-  background: url('/src/assets/img/gradient-4.jpg') no-repeat 0% 0%
-  background-size: cover
   border-radius: 25px
+  @include card-glass
 
   &-wrapper
     display: flex

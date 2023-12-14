@@ -1,3 +1,5 @@
+@import './mixins'
+
 *
   box-sizing: border-box
   font-size: 16px
@@ -20,7 +22,7 @@ a
   max-width: 1200px
   width: 100%
   margin: 0 auto
-  padding: 0 3%
+  padding: 0 5px
 
 .section
   z-index: 2
@@ -29,9 +31,8 @@ a
 .block-bottom
   height: 100%
   padding: 28px 16px 16px
-  background: url('/src/assets/img/gradient-1.jpg') no-repeat 0% 0%
-  background-size: cover
   border-radius: 25px
+  @include card-glass
 
   &-inner
     display: flex

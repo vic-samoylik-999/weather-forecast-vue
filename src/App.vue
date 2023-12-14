@@ -79,15 +79,16 @@ onMounted(() => {
   justify-content: center
   align-items: center
   min-height: 100vh
-  padding: 20px 0
-  background-color: #59585d
+  // background-color: #59585d
+  background: url('./assets/img/background.jpg') no-repeat
   transition: .3s ease
+  @media (max-width: 767px)
+    padding: 20px 0
 
 .laptop
   width: 100%
   padding: 20px
-  background-color: #0e100f
-  border-radius: 25px
+  @include container-glass
 
 .sections
   display: flex
@@ -136,20 +137,19 @@ onMounted(() => {
   row-gap: 25px
   height: 100%
   padding: 16px
-  background: url('./assets/img/gradient-1.jpg') no-repeat 50% 50%
-  background-size: cover
   border-radius: 25px
+  @include card-glass
 
 .search
   width: 100%
   padding: 16px
   font-family: 'Inter', Arial, sans-serif
   color: $white
-  background-color: rgba(0, 0, 0, 0.75)
   border-radius: 16px
   border: none
   outline: none
   cursor: pointer
+  @include card-glass
 
 .section-bottom
   width: 50%

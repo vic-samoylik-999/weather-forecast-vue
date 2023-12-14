@@ -62,6 +62,7 @@ const today = new Date().toLocaleDateString("en-EN", {
 
 <style lang="sass" scoped>
 @import '../assets/sass/main.sass'
+@import '../assets/sass/mixins.sass'
 
 .summary 
   display: flex
