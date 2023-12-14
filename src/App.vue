@@ -56,7 +56,7 @@ onMounted(() => {
       </div>
     </main>
   </div>
-  <div else class="page">
+  <div v-else-if="weatherInfo?.cod" class="page">
     <section class="section section-left">
       <div class="info">
         <div class="city-inner">
