@@ -27,7 +27,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="page">
+  <div v-if="weatherInfo?.main" class="page">
     <main class="main">
       <div class="container">
         <div class="laptop">
@@ -56,6 +56,16 @@ onMounted(() => {
       </div>
     </main>
   </div>
+  <div else class="page">
+    <section class="section section-left">
+      <div class="info">
+        <div class="city-inner">
+          <input v-model="city" @keyup.enter="getWeather" type="text" class="search">
+        </div>
+        <WeatherSummary :weatherInfo="weatherInfo" />
+      </div>
+    </section>
+  </div>
 </template>
 
 <style lang="sass" scoped>
@@ -68,6 +78,7 @@ onMounted(() => {
   min-height: 100vh
   padding: 20px 0
   background-color: #59585d
+  transition: .3s ease
 
 .laptop
   width: 100%

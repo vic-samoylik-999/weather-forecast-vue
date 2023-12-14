@@ -46,11 +46,17 @@ const today = new Date().toLocaleDateString("en-EN", {
   </div>
   <!-- Handler to city which is not found -->
   <div v-else-if="weatherInfo?.cod == 404" class="summary">
-    <p>{{ capitalize(weatherInfo?.message) }}</p>
+    <div class="error-message">
+      <p class="error-message__label">Something went wrong...</p>
+      <p class="error-message__sublabel">{{ capitalize(weatherInfo?.message) }}</p>
+    </div>
   </div>
   <!-- Handler to empty input -->
   <div v-else-if="weatherInfo?.cod == 400" class="summary">
-    <p>{{ capitalize(weatherInfo?.message) }}</p>
+    <div class="error-message">
+      <p class="error-message__label">Something went wrong...</p>
+      <p class="error-message__sublabel">{{ capitalize(weatherInfo?.message) }}</p>
+    </div>
   </div>
 </template>
 
@@ -121,4 +127,20 @@ const today = new Date().toLocaleDateString("en-EN", {
     width: 15px
     height: 15px
     background-image: url('/src/assets/img/calendar.svg')
+
+
+.error-message
+  display: flex
+  flex-direction: column
+  align-items: center
+  row-gap: 10px
+  padding-bottom: 16px
+  &__label
+    font-weight: bold
+    padding: 0
+    margin: 0
+  &__sublabel
+    font-size: 0.8rem
+    padding: 0
+    margin: 0
 </style>
