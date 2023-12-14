@@ -1,5 +1,4 @@
 <script setup>
-import { DotLoader } from "vue3-spinner"
 const props = defineProps({
     coordinats: {
         type: [Object, null],

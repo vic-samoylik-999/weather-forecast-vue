@@ -23,6 +23,7 @@ onMounted(() => {
     city.value = 'london'
   }
   getWeather()
+  getMap(lat, lon, map, mapContainer)
 })
 </script>
 
@@ -56,6 +57,7 @@ onMounted(() => {
       </div>
     </main>
   </div>
+  <!-- If there was an error -->
   <div v-else-if="weatherInfo?.cod" class="page">
     <section class="section section-left">
       <div class="info">
