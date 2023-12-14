@@ -2,16 +2,18 @@
 import { ref, onMounted } from 'vue'
 import WeatherSummary from './components/WeatherSummary.vue'
 import Highlights from './components/Highlights.vue'
-import Coordinats from './components/Coordinats.vue'
+import Map from './components/Map.vue'
 import Humidity from './components/Humidity.vue'
 
 const city = ref('')
 const weatherInfo = ref(null)
+const coordinats = ref(null)
 
 const getWeather = async () => {
   const responce = await fetch(`${import.meta.env.VITE_BASE_URL}?q=${city.value}&units=metric&appid=${import.meta.env.VITE_API_KEY}`)
   const data = await responce.json()
   weatherInfo.value = data
+  coordinats.value = data.coord
   localStorage.setItem('city', JSON.stringify(city.value))
 }
 
@@ -23,7 +25,6 @@ onMounted(() => {
     city.value = 'london'
   }
   getWeather()
-  getMap(lat, lon, map, mapContainer)
 })
 </script>
 
@@ -36,7 +37,7 @@ onMounted(() => {
             <section class="section section-left">
               <div class="info">
                 <div class="city-inner">
-                  <input v-model="city" @keyup.enter="getWeather" type="text" class="search">
+                  <input v-model="city" @keyup.enter="getWeather" type="text" class="search" placeholder="RU / ENG">
                 </div>
                 <WeatherSummary :weatherInfo="weatherInfo" />
               </div>
@@ -47,7 +48,7 @@ onMounted(() => {
           </div>
           <div class="sections">
             <section class="section-bottom">
-              <Coordinats :coordinats="weatherInfo?.coord" />
+              <Map :coordinats="coordinats" />
             </section>
             <section class="section-bottom">
               <Humidity :humidity="weatherInfo?.main?.humidity" />
