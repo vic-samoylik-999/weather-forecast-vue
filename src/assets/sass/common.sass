@@ -83,3 +83,15 @@ a
 
 .leaflet-bottom.leaflet-right
   display: none
+
+.section-bottom.bottom-map
+  @media (max-width: 767px)
+    position: absolute
+    top: 423px
+    left: 50%
+    width: 92%
+    height: 250px
+    transform: translateX(-50%)
+    z-index: 10
+  @media (max-width: 575px)
+    width: 86%

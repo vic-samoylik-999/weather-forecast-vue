@@ -47,12 +47,8 @@ onMounted(() => {
             </section>
           </div>
           <div class="sections">
-            <section class="section-bottom">
-              <Map :coordinats="coordinats" />
-            </section>
-            <section class="section-bottom">
-              <Humidity :humidity="weatherInfo?.main?.humidity" />
-            </section>
+            <Map :coordinats="coordinats" />
+            <Humidity :humidity="weatherInfo?.main?.humidity" />
           </div>
         </div>
       </div>
@@ -79,7 +75,6 @@ onMounted(() => {
   justify-content: center
   align-items: center
   min-height: 100vh
-  // background-color: #59585d
   background: url('./assets/img/background.jpg') no-repeat
   transition: .3s ease
   @media (max-width: 767px)
@@ -97,7 +92,7 @@ onMounted(() => {
 
   @media (max-width: 767px)
     flex-direction: column
-    gap: initial
+    gap: 270px
 
 .section-left
   width: 30% 
