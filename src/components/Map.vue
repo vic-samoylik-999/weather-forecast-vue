@@ -14,8 +14,8 @@ const props = defineProps({
         <div style="width: 100%; height: 100%;">
             <l-map style="border-radius: 25px;" ref="map" :zoom="10"
                 :center="[props.coordinats?.lat, props.coordinats?.lon]">
-                <l-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" layer-type="base"
-                    name="OpenStreetMap"></l-tile-layer>
+                <l-tile-layer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+                    layer-type="base" name="StadiaAlidadesBlack"></l-tile-layer>
             </l-map>
         </div>
     </section>
